@@ -14,13 +14,19 @@ class PostsController < ApplicationController
 
   def index
     @q = params[:q]
-    if @q
-      aux = @q.to_s
-
-      @posts = Post.where("content LIKE '%#{aux}%'").order("created_at DESC")
+    aux = @q.to_s
+   # @c = params[:c]
+    if @q#==nil
+      #@posts = Post.where(:category => @q)
+      @posts = Post.where(:category => @q)
+      
+     
       #@posts = Post.where(:title => @q) #busca x por nombre
     else
-       @posts =Post.order("created_at DESC")
+      @posts = Post.where("content LIKE '%#{aux}%'").order("created_at DESC")
+     #if @c
+        #aux = @c.to_s
+      #end
     end
    
   end
@@ -100,6 +106,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content,:like)
+      params.require(:post).permit(:title, :content,:like,:category)
     end
-end
+
+  end

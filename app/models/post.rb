@@ -2,8 +2,9 @@ class Post < ActiveRecord::Base
 
 	validates :title, presence: true, uniqueness: true
 	validates :content, presence: true #, length:{minimum 25}
-
+	validates :category, presence: true
 	has_many :coments
+	#belongs_to :user  
 
 	before_save :initialize_like
 

@@ -15,10 +15,12 @@
        <button type="submit" class="btn be-blue white">Buscar</button>
       </form>
 
+
       <table id="customers">
         <thead>
           <tr>
             <th>Titulo</th>
+            <th>Category</th>
             <th colspan="3" >Edicion</th>
             <th>fecha</th>
           </tr>
@@ -29,6 +31,7 @@
           <% @posts.each do |post| %>
             <tr class="alt">
               <td><%= post.title %></td>
+              <td><%= post.category %></td>
               <td><%= link_to 'Ver', post %></td>
               <td><%= link_to 'Editar', edit_post_path(post) %></td>
               <td><%= link_to 'Eliminar', post, method: :delete, data: { confirm: 'Esta usted seguro?' } %></td>
